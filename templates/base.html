@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<Title>Songnote</Title>
+<head>
+
+
+
+{% include "navbar.html" %}	
+	
+<style>
+	p.ex1 {
+	border: 1px solid white;
+	margin-right: 50px	
+	}
+	
+	</style>
+	</head>
+	<body>
+	
+	<p class="ex1">{% block content %}
+	
+	replace me
+	</p>
+	{% endblock %}
+	</body>
+
+</html>
