@@ -22,10 +22,10 @@ def leaderboard_view(request, *args, **kwargs): #*args, **kwargs
 def feedback_view(request, *args, **kwargs): #*args, **kwargs
 	return render(request,"feedback.html", {})
 
-def uploaded_songs_view(request, *args, **kwargs): #*args, **kwargs
-	return render(request,"uploaded_songs.html", {})
-
 def questionnairesuccess_view(request, *args, **kwargs): #*args, **kwargs
 	return render(request,"questionnairesuccess.html", {})
+
+def successful_upload_view(request, *args, **kwargs): #*args, **kwargs
+	return render(request,"successful_upload.html", {})
 
 

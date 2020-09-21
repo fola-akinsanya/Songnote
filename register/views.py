@@ -36,9 +36,10 @@ def profile_view(request):
 			else:
 				return redirect("home")
 	else: 
-		profile_form=ProfileForm(request.POST, user= request.user)
+		profile_form=ProfileForm()
 
 	return render(request, "register/register-2.html", {"profile_form": profile_form})
+
 
 
 

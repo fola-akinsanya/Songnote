@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-
+from django.conf import settings
 
 
 # Create your models here.
@@ -55,15 +56,103 @@ class ListenerQuestionnaire(models.Model):
 		('other-other','Other - Any other ethnic group')
 	]
 
-	#user = User.objects.get(user='username')
-	age_range = models.CharField(max_length= 40, choices= AGE_RANGE, blank=False)
-	gender = models.CharField(max_length= 12, choices = GENDER, blank=False)
-	ethnic_group= models.CharField(max_length=100, choices=ETHNIC_GROUP, blank=False)
-	favourite_genre= models.CharField(max_length=100, choices=MUSIC_GENRE, blank=False)
-	artists_you_listen_to= models.TextField(blank=False)
-	favourite_hangout_spots= models.TextField(blank=False)
-	author = models.ForeignKey(settings.AUTH_USER_MODEL)
-	#ßclass models.User(models.Model):
+	added_by = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+	age_range = models.CharField(max_length= 40, choices= AGE_RANGE)
+	gender = models.CharField(max_length= 12, choices = GENDER)
+	ethnic_group= models.CharField(max_length=100, choices=ETHNIC_GROUP)
+	favourite_genre= models.CharField(max_length=100, choices=MUSIC_GENRE)
+	artists_you_listen_to= models.TextField()
+	favourite_hangout_spots= models.TextField()
+	
+class ListenerFeedback(models.Model):
+	PLAYLIST = [
+	('yes', 'Yes'),
+	('no', 'No')
+	]
+
+	PRODUCTION_VALUE = [
+	('1','1'),
+	('2','2'),
+	('3','3'),
+	('4','4'),
+	('5','5')
+	]
+
+	LYRIC_VALUE = [
+	('1','1'),
+	('2','2'),
+	('3','3'),
+	('4','4'),
+	('5','5')
+	]
+
+	VOCAL_PERF= [
+	('1','1'),
+	('2','2'),
+	('3','3'),
+	('4','4'),
+	('5','5')
+	]
+		
+	LISTEN_AGAIN = [
+	('yes', 'Yes'),
+	('no', 'No')
+	]
+
+	LISTEN_ANOTHER = [
+	('yes', 'Yes'),
+	('no', 'No')
+	]
+
+	WATCH_LIVE = [
+	('yes', 'Yes'),
+	('no', 'No')
+	]
+
+	HIT = [
+	('yes', 'Yes'),
+	('no', 'No')
+	]
+
+	added_by = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, null=True)
+	playlist= models.CharField(max_length= 12, choices = PLAYLIST)
+	production_value= models.CharField(max_length= 12, choices = PRODUCTION_VALUE)
+	lyrical_value= models.CharField(max_length= 12, choices = LYRIC_VALUE)
+	vocal_perf= models.CharField(max_length= 12, choices = VOCAL_PERF)
+	listen_again= models.CharField(max_length= 12, choices = LISTEN_AGAIN)
+	listen_another= models.CharField(max_length= 12, choices = LISTEN_ANOTHER)
+	watch_live = models.CharField(max_length= 12, choices = WATCH_LIVE)
+	hit = models.CharField(max_length= 12, choices = HIT)
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
