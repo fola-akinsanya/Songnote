@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<title>edit profile</title>
+{% block content %}
+
+{% if user.is_authenticated %}
+{% load crispy_forms_tags %}
+
+<h1>edit profile</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">update profile</button>
+</form>  
+<button onclick= window.location.href="change_password">change password</button>
+
+<br>
+{% endif %}
+{% endblock %}

@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ name }}</h1>
-<p> {{user_type}}</p>
+<h1> profile </h1>
+{% if user.is_authenticated %}
+<p>Username: {{ user }}</p>
+<p> First Name: {{user.first_name}}</p>
+<p> Last Name: {{user.last_name}}</p>
+<p> E-mail: {{user.email}}</p>
+<button onclick= window.location.href="edit_profile">edit profile</button>
 
+{% else %}
+  <p>Please sign up or login to view your profile</p>
+  <button onclick= window.location.href="{%url 'login'%}">log in</button>
+  <button onclick= window.location.href="{%url 'register'%}">sign up</button>
+{% endif %}
 {% endblock %}

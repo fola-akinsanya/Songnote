@@ -13,7 +13,7 @@ from .forms import UploadForm
 
 def upload_song_view(request):
 	if request.method == "POST":
-		upload_form = UploadForm(request.POST,request.FILES)
+		upload_form = UploadForm(request.POST,request.FILES, artist=request.user)
 		if upload_form.is_valid():
 			upload_form.save()
 			return redirect("upload success")

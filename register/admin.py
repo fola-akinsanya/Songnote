@@ -3,12 +3,9 @@ from django.contrib import admin
 # Register your models here.
 from .models import Profile
 
-#class CustomUserAdmin():
-	#standardregister_form = RegisterForm
-	#standardprofile_form= ProfileForm
-	#models = User, Profile
-	#list_display = ["Name", "User_Type", "username", "email", "password1", "password2"]
+class ProfileAdmin(admin.ModelAdmin):
+	list_display = ["user", "User_type", "city_of_residence"]
 
-admin.site.register(Profile)
+admin.site.register(Profile,ProfileAdmin)
 
 

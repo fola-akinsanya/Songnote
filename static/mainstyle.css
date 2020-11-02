@@ -1,0 +1,46 @@
+
+  h1 {
+  margin: 10px;
+  font-family: Roboto 
+
+ }
+
+p {
+  font-family: Roboto;
+  margin: 10px
+}
+a {
+  font-family: Roboto;
+  margin: px
+}
+button {
+  background-color: #272727; /* Green */
+  font-family: Roboto;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+button:hover,
+button:focus {
+    background: #CCCCCC;
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    background: #f02a50
+    transform: scale(0.99);
+}
+button:active:after {
+  background: #F02A50
+}
+form {
+  font-family: Roboto;
+  margin: 10px
+}

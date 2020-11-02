@@ -30,6 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # only during development 
 
 # Application definition
 
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'feedback',
 
 
     # Own apps
@@ -61,6 +64,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'audiofield.middleware.threadlocals.ThreadLocals',
+
 ]
 
 ROOT_URLCONF = 'songnote.urls'
@@ -133,11 +139,34 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/songs')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media/songs', 'media/songtoreview')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    ]
+STATIC_URL = '/static/'
+
+#Audiofield
+CHANNEL_TYPE_VALUE = 0
+FREQ_TYPE_VALUE = 8000
+CONVERT_TYPE_VALUE = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

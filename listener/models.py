@@ -4,10 +4,15 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.conf import settings
-
+from audiofield.fields import AudioField
+import os.path
 
 # Create your models here.
 class ListenerQuestionnaire(models.Model):
+
+	def ___str___(self):
+		return self.title
+
 	AGE_RANGE = [
 		('16-19', '16-19'),
 		('20-24', '20-24'),
@@ -65,6 +70,10 @@ class ListenerQuestionnaire(models.Model):
 	favourite_hangout_spots= models.TextField()
 	
 class ListenerFeedback(models.Model):
+
+	def ___str___(self):
+		return self.title
+		
 	PLAYLIST = [
 	('yes', 'Yes'),
 	('no', 'No')
@@ -114,7 +123,7 @@ class ListenerFeedback(models.Model):
 	('no', 'No')
 	]
 
-	added_by = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, null=True)
+	added_by = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
 	playlist= models.CharField(max_length= 12, choices = PLAYLIST)
 	production_value= models.CharField(max_length= 12, choices = PRODUCTION_VALUE)
 	lyrical_value= models.CharField(max_length= 12, choices = LYRIC_VALUE)
@@ -123,7 +132,13 @@ class ListenerFeedback(models.Model):
 	listen_another= models.CharField(max_length= 12, choices = LISTEN_ANOTHER)
 	watch_live = models.CharField(max_length= 12, choices = WATCH_LIVE)
 	hit = models.CharField(max_length= 12, choices = HIT)
-	
+	voicenote = models.FileField(upload_to='media/voicenotes', blank=True, null=True)
+
+class Song(models.Model):
+	song = models.FileField(upload_to='media/songtoreview')
+	reviewer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, null=True)
+
+
 
 
 

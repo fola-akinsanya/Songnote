@@ -2,12 +2,77 @@
 
 {% block title %}Song Feedback{% endblock %}
 {% load crispy_forms_tags %}
-
 {% block content %}
-<h1>Song Feedback</h1>
-    <form method="POST" class="form-group">
+<h1>song feedback</h1>
+<audio controls controlslist='nodownload'>
+  <source src= "{{ songs }}" type="audio/ogg" >
+  <source src= "{{ songs }}" type="audio/mpeg">
+  <source src= "{{ songs }}" type="audio/mp3">
+Your browser does not support the audio element.
+</audio>
+
+ 	<form id="feedbackform" class="form-group">
 	{% csrf_token %}
 	{{ listenerfeedback_form.as_p }}
-	<button type="submit" class="btn btn-success">Submit Answers</button>
-    </form>
+	<button type="submit" class="btn btn-success">submit answers</button>
+ 	</form>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vmsg@0.3.6/vmsg.css">
+    <style>
+      .vmsg-slider-wrapper {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="recordButton">open voice recorder</button> 
+	{% load static %}
+    <script type="module" //vrecorder.js code>
+
+      import { record } from "https://cdn.jsdelivr.net/npm/vmsg@0.3.6/vmsg.min.js";
+
+      let recordButton = document.getElementById("recordButton");
+      
+      //let feedbackform = document.getElementById("feedbackform")
+
+      recordButton.onclick = function() {
+          record({
+              wasmURL: "/static/vmsg.wasm"
+          }).then(blob => {
+              console.log("Recorded MP3", blob);
+              var url = URL.createObjectURL(blob);
+              var save = document.createElement('button');
+              save.innerHTML = "Save";
+              var preview = document.createElement('audio');
+              preview.controls = true;
+              preview.src = url;
+              document.body.appendChild(preview);
+
+       
+
+              //var voicenoteFile = new File([blob], "voicenote.mp3");
+
+
+              //var voicenoteField = document.getElementById("id_voicenote");
+              //voicenoteField.value = voicenoteFile;
+
+             
+          });
+      };
+      var formElm = new FormData(feedbackform);
+        formElm.set("voicenote", blob, "voicenote.mp3")
+
+        feedbackform.onsubmit = async (e) => {
+        e.preventDefault();
+        let response = await fetch('/feedback', {
+        method: 'POST',
+        body: formElm
+               	}); 
+               	 };
+    </script>
+  </body>
+</html>
+
 {% endblock %}

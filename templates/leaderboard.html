@@ -4,11 +4,25 @@
 {% block content %}
 
 <h1>Listener Leaderboard</h1>
-<p>This is a template</p>
 
-<p>
-{{ my_text }}, {{ my_number }}
-</p>
+<div class="container">
+	<table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">Ranking</th>
+                    <th scope="col">Listener</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	{% for results in leaderboard_results %}
+                	<tr>
+                		<td>{{leaderboard_results.ranking }}</td> 
+                		<td>{{leaderboard_results.listener}}</td>
+                	</tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock content %}
 

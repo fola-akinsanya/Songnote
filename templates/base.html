@@ -1,19 +1,23 @@
+{% load static %}
+
 <!doctype html>
 <html>
-	<Title>Songnote</Title>
+	<Title>songnote</Title>
+	<link rel="stylesheet" href = "{% static 'mainstyle.css' %}">
+
 <head>
-
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
 
 {% include "navbar.html" %}	
-	
-<style>
-	div {
-	margin: 40px 40px 40px 70px
-	}
-	
+
+	<style>
+
+
 	</style>
+
+
 	</head>
+
 	<body>
 	
 	<div>{% block content %}

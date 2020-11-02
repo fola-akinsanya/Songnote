@@ -60,7 +60,7 @@ class Profile(models.Model):
 	('worcester','Worcester'),
 	('york', 'York'),
 	]
-	Name = models.CharField(max_length= 40, blank=False)
+	user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
 	User_type = models.CharField(max_length= 12, choices = USER_TYPE_CHOICES)
 	city_of_residence = models.CharField(max_length= 30, choices = CITY_CHOICES)
 

@@ -5,12 +5,11 @@
 <h1>Welcome to Songnote</h1>
 
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  <p> Hi {{ user.username }}!
+  <p><button onclick= window.location.href="{% url 'logout' %}">log out</button></p>
 {% else %}
   <p>Please sign up or login to get started</p>
-  <a href="{% url 'login' %}">Log In</
-  	<body> | </body>
-  <a href="{%url 'register'%}">Sign Up</
+  <button onclick= window.location.href="{%url 'login'%}">log in</button>
+  <button onclick= window.location.href="{%url 'register'%}">sign up</button>
 {% endif %}
 {% endblock %}

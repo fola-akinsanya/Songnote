@@ -2,42 +2,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
-  margin: 0;
-  font-family: Tahoma, Geneva, sans-serif;
+	margin: 0px ;
+  
 }
 
 .topnav {
   overflow: hidden;
-  background-color: #262626;
+  background-color: #272727;
+  font-family: Roboto; 
+  ;
 }
 
 .topnav a {
   float: left;
-  color: #a6a6a6;
+  color: #CCCCCC;
   text-align: center;
-  padding: 14px 16px;
+  padding:30px 30px;
   text-decoration: none;
   font-size: 17px;
 }
 
 .topnav a:hover {
-  background-color: #a6a6a6;
+  background-color: #FFFFFF;
   color: black;
 }
 
 .topnav a.active {
-  background-color: #278fb8;
+  background-color: #f02a50;
   color: white;
 }
 </style>
 </head>
-<body>
-
+</body>
 <div class="topnav">
+	{% load static %}
+	<div class="logo"><a href = "http://127.0.0.1:8000/"><img src = "{% static 'black songnote logo2.png' %}" alt="Songnote"></a>
 	<div class="topnav-centered">
-    	<a href="http://127.0.0.1:8000/" class="active">Home</a>
-  		<a href="http://127.0.0.1:8000/profile">Profile</a>
-  		<a href="#settings">Account</a>
+    	<a href="http://127.0.0.1:8000/" class="active">home</a>
+  		<a href="http://127.0.0.1:8000/profile">profile</a>
+  		<a href="#settings">account</a>
 </div>
 
 </nav>

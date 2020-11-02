@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
-from .forms import ProfileForm
-from django.contrib.auth import authenticate, login
+from .forms import ProfileForm, EditProfileForm
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .models import Profile
 
 
@@ -40,17 +41,52 @@ def profile_view(request):
 
 	return render(request, "register/register-2.html", {"profile_form": profile_form})
 
+def edit_profile_view(request):
+	if request.method =="POST":
+		form = EditProfileForm(request.POST, instance=request.user)
+
+		if form.is_valid():
+			form.save()
+			return redirect('profile')
+
+	else:
+		form = EditProfileForm(instance=request.user)
+		return render(request, 'registration/edit_profile.html', {'form':form})
+
+def change_password_view(request):
+	if request.method =="POST":
+		form = PasswordChangeForm(data=request.POST, user=request.user)
+
+		if form.is_valid():
+			form.save()
+			update_session_auth_hash(request, form.user)
+			return redirect('registration/passwordchangesuccess.html')
+
+	else:
+		form = PasswordChangeForm(user=request.user)
+		return render(request, 'registration/change_password.html', {'form':form})
 
 
 
-#def register_view(response):
-	#if response.method == "POST":
-		#form = RegisterForm(response.POST)
-		#if form.is_valid():
-			#form.save()
 
-		#return redirect("home")
-	#else:
-		#form = RegisterForm()
 
-	#return render(response, "register/register.html", {"form":form})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
