@@ -9,10 +9,10 @@
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
+  <script type="text/javascript"> 
+  	document.getElementById("id_password").style.display = "none";</script>
   <button type="submit">update profile</button>
 </form>  
-<button onclick= window.location.href="change_password">change password</button>
 
-<br>
 {% endif %}
 {% endblock %}

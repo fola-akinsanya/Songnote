@@ -5,8 +5,9 @@
 <h1>Welcome to Songnote</h1>
 
 {% if user.is_authenticated %}
-  <p> Hi {{ user.username }}!
-  <p><button onclick= window.location.href="{% url 'logout' %}">log out</button></p>
+  <p> Hi {{ user.username }}!</p>
+  <p> Please head to the Songs tab to find any new actions for you. If you are a musician, you can upload songs to be reviewed there too!</p>
+  <button onclick= window.location.href="{% url 'logout' %}">log out</button>
 {% else %}
   <p>Please sign up or login to get started</p>
   <button onclick= window.location.href="{%url 'login'%}">log in</button>

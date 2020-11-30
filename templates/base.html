@@ -1,18 +1,15 @@
 {% load static %}
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<Title>songnote</Title>
-	<link rel="stylesheet" href = "{% static 'mainstyle.css' %}">
 
 <head>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
 
 {% include "navbar.html" %}	
+	<link rel="stylesheet" href = "{% static 'mainstyle.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 
 	<style>
-
-
 	</style>
 
 
@@ -21,9 +18,7 @@
 	<body>
 	
 	<div>{% block content %}
-	
 	replace me
-	</p>
 	</div>{% endblock %}
 	</body>
 

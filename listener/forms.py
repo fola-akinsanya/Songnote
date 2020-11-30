@@ -26,12 +26,12 @@ class ListenerFeedbackForm(forms.ModelForm):
 		widgets = {
 		'voicenote': forms.HiddenInput(),
 		}
-		fields = ('playlist', 'production_value','lyrical_value', 'vocal_perf','listen_again','listen_another','watch_live','hit', 'voicenote')
+		fields = ('playlist', 'production_value','songwriting', 'vocal_perf','listen_again','listen_another','watch_live','hit', 'voicenote')
 		labels= {
 			'playlist': ('Would you playlist this song?'),
-			'production_value':('What would you rate the production value out of 5?'),
-			'lyrical_value': ('What would you rate the lyrical value out of 5?'),
-			'vocal_perf': ('What would you rate the vocal performance out of 5?'),
+			'production_value':('How would you rate the production value?'),
+			'songwriting': ('How would you rate the songwriting out of 5?'),
+			'vocal_perf': ('How would you rate the vocal performance?'),
 			'listen_again': ('Would you listen to this song again?'),
 			'listen_another': ("Would you listen to another of this artist's songs?"),
 			'watch_live': ("Would you watch this musician perform live?"),

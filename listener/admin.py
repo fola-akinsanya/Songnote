@@ -14,7 +14,7 @@ class ListenerQuestionnaireAdmin(admin.ModelAdmin):
 admin.site.register(ListenerQuestionnaire, ListenerQuestionnaireAdmin)
 
 class ListenerFeedbackAdmin(admin.ModelAdmin):
-	list_display = ('added_by','playlist', 'production_value','lyrical_value','vocal_perf','listen_again','listen_another', 'watch_live','hit')
+	list_display = ('added_by','playlist', 'production_value','songwriting','vocal_perf','listen_again','listen_another', 'watch_live','hit')
 
  
 admin.site.register(ListenerFeedback, ListenerFeedbackAdmin)

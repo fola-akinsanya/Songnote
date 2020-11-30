@@ -57,6 +57,8 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),
      name='password_reset_complete'),
 
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='registration/login.html')),
+
     url(r'^admin/',(admin.site.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

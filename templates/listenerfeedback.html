@@ -14,8 +14,6 @@ Your browser does not support the audio element.
  	<form id="feedbackform" class="form-group">
 	{% csrf_token %}
 	{{ listenerfeedback_form.as_p }}
-	<button type="submit" class="btn btn-success">submit answers</button>
- 	</form>
 
 <html>
   <head>
@@ -72,6 +70,8 @@ Your browser does not support the audio element.
                	}); 
                	 };
     </script>
+    <button type="submit" class="btn btn-success">submit answers</button>
+ 	</form>
   </body>
 </html>
 

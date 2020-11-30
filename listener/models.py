@@ -80,27 +80,27 @@ class ListenerFeedback(models.Model):
 	]
 
 	PRODUCTION_VALUE = [
-	('1','1'),
-	('2','2'),
-	('3','3'),
-	('4','4'),
-	('5','5')
+	('poor','Poor'),
+	('not-great','Not great'),
+	('average','Average'),
+	('good','Good'),
+	('excellent','Excellent')
 	]
 
-	LYRIC_VALUE = [
-	('1','1'),
-	('2','2'),
-	('3','3'),
-	('4','4'),
-	('5','5')
+	SONGWRITING = [
+	('poor','Poor'),
+	('so-so','So so'),
+	('average','Average'),
+	('good','Good'),
+	('excellent','Excellent')
 	]
 
 	VOCAL_PERF= [
-	('1','1'),
-	('2','2'),
-	('3','3'),
-	('4','4'),
-	('5','5')
+	('poor','Poor'),
+	('so-so','So so'),
+	('average','Average'),
+	('good','Good'),
+	('excellent','Excellent')
 	]
 		
 	LISTEN_AGAIN = [
@@ -126,7 +126,7 @@ class ListenerFeedback(models.Model):
 	added_by = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
 	playlist= models.CharField(max_length= 12, choices = PLAYLIST)
 	production_value= models.CharField(max_length= 12, choices = PRODUCTION_VALUE)
-	lyrical_value= models.CharField(max_length= 12, choices = LYRIC_VALUE)
+	songwriting= models.CharField(max_length= 12, choices = SONGWRITING)
 	vocal_perf= models.CharField(max_length= 12, choices = VOCAL_PERF)
 	listen_again= models.CharField(max_length= 12, choices = LISTEN_AGAIN)
 	listen_another= models.CharField(max_length= 12, choices = LISTEN_ANOTHER)
